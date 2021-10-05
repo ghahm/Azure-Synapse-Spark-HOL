@@ -1,6 +1,6 @@
 # 1. Dataframe 생성하고 자료 조회하기
 baseDF = spark.read.load('abfss://demodata@adlsgen2krc.dfs.core.windows.net/sparkhol/wordcount-data/Harry-Potter-and-the-Sorcerer.txt', format='text')
-display(df.limit(10))
+display(baseDF.limit(10))
 
 baseDF.take(1) # 첫번째 행 return
 #baseDF.collect() # 전체 데이터 return
