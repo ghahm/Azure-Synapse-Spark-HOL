@@ -38,24 +38,13 @@ flightDF.registerTempTable("flightTable")
 #flightDF.show()
 flightDF.take(5)
 
-# 2.2 sqlContext를 이용하여 쿼리 수행 
-resultDF = sqlContext.sql(" SELECT UniqueCarrier, max(DepDelay) as maxDelayedTime \
-                                    FROM ( \
-                                           SELECT UniqueCarrier, DepDelay \
-                                          FROM flightTable \
-                                          WHERE DepDelay > 15 \
-                                    ) d \
-                                    GROUP BY UniqueCarrier \
-                                    ORDER BY maxDelayedTime DESC ")
-resultDF.collect()
-
 # 2.3 %%sql magic 정의 -> 쿼리 수행 (주의 : 아래 sql magic이 포함된 셀에는 # comment를 추가하면 에러 발생하기 때문에 별도의 셀로 작성)
 %%sql
-SELECT UniqueCarrier, max(DepDelay) as maxDelayedTime \
-FROM ( \
-       SELECT UniqueCarrier, DepDelay \
-      FROM flightTable \
-      WHERE DepDelay > 15 \
-) d \
-GROUP BY UniqueCarrier \
+SELECT UniqueCarrier, max(DepDelay) as maxDelayedTime
+FROM (
+      SELECT UniqueCarrier, DepDelay
+      FROM flightTable
+      WHERE DepDelay > 15
+) d
+GROUP BY UniqueCarrier
 ORDER BY maxDelayedTime DESC
