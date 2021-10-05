@@ -6,7 +6,7 @@ ordersRdd1=sc.textFile('abfss://[container명]@[storageaccount명].dfs.core.wind
 
 ordersRdd1.getNumPartitions()
 
-ordersRdd1.count()
+#ordersRdd1.count()
 
 # Spark Web UI의 Stage 메뉴에서 task 개수를 참고하여 파티션 수 확인 -> 총 파일 수 : 1.6 MB 파일 2개  --> RDD 파티션 2개
 #ADLS Gen2는 아래 코드
@@ -16,7 +16,7 @@ ordersRdd2=sc.textFile('abfss://[container명]@[storageaccount명].dfs.core.wind
 
 ordersRdd2.getNumPartitions()
 
-ordersRdd2.count()
+#ordersRdd2.count()
 
 # Spark Web UI의 Stage 메뉴에서 task 개수를 참고하여 파티션 수 확인 -> 총 파일 수 : 1.6 MB 파일 3개  --> RDD 파티션 3개
 #ADLS Gen2는 아래 코드
@@ -25,7 +25,7 @@ ordersRdd3=sc.textFile('abfss://[container명]@[storageaccount명].dfs.core.wind
 #ordersRdd3=sc.textFile('wasbs://[container명]@[storageaccount명].blob.core.windows.net/sparkhol/rdd-partition-data/ordersTbls/small-[1-3]/orders.tbl').map(lambda line: line.split("|")) 
 ordersRdd3.getNumPartitions()
 
-ordersRdd3.count()
+#ordersRdd3.count()
 
 # Spark Web UI의 Stage 메뉴에서 task 개수를 참고하여 파티션 수 확인 -> 총 파일 수 : 1.6 MB 파일 7개 & 164 MB 1개 --> RDD 파티션 9개
 #ADLS Gen2는 아래 코드
@@ -34,8 +34,8 @@ ordersRdd4=sc.textFile('abfss://[container명]@[storageaccount명].dfs.core.wind
 #ordersRdd4=sc.textFile('wasbs://[container명]@[storageaccount명].blob.core.windows.net/sparkhol/rdd-partition-data/ordersTbls/*/orders.tbl').map(lambda line: line.split("|")) 
 ordersRdd4.getNumPartitions()
 
-ordersRdd4.count()
+#ordersRdd4.count()
 
 # Jupyter의 Spark UI의 Storage 메뉴에서 파티션 수 확인 -> 총 파일 수 : 1.6 MB 파일 7개 & 164 MB 1개 --> RDD 파티션 9개 (업데이트 되는데 시간이 다소 소요됨)
-ordersRdd4.cache()
-ordersRdd4.count()
+#ordersRdd4.cache()
+#ordersRdd4.count()
